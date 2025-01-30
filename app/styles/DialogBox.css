@@ -10,6 +10,7 @@
     flex-direction: row;
     color: white;
     background-color: #343541;
+    overflow: hidden;
 }
 #text-zone{
     background-color: #343541;
@@ -34,4 +35,5 @@
     background-color: transparent;
     border: none;
     margin-top: 40px;
+    margin-right: 5px;
 }
