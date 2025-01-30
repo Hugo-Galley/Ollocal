@@ -10,10 +10,8 @@ export default function Home() {
     const messagesEndRef = useRef(null);
 
     const handleNewMessage = (message) => {
-        // Ajouter le message de l'utilisateur
         setMessages(prevMessages => [...prevMessages, { text: message, sender: 'user' }]);
         
-        // Simuler une réponse IA après un délai
         setTimeout(() => {
             askToAI(message);
         }, 1000);
@@ -23,7 +21,7 @@ export default function Home() {
         setMessages(prevMessages => [...prevMessages, { text: `Réponse IA à: ${message}`, sender: 'ai' }]);
     };
 
-    // Scroll vers le bas à chaque message ajouté
+
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
