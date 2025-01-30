@@ -21,10 +21,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <nav>
-          <Link href="/" style={{marginRight: 10, color:'white'}}>Acceuil</Link>
-          <Link href="/about" style={{color:'white'}}>A Propos</Link>
-        </nav>
         <main>
         {children}
         </main>
