@@ -1,52 +1,50 @@
-.mainBoxHome {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-}
-
-.mainBoxHome > MessageBox {
-    background-color: aliceblue;
-}
-
-.mainBoxHome > DialogBox {
+.title{
+    text-align: center;
+    font-size: 3em;
     margin-bottom: 20px;
+    justify-content: center;
 }
 .Conversation{
 
-    margin-top: 50px;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-height: 100vh;
-    scrollbar-width: none;
+    width: 80vw;
+    height: 90vh;
+    margin: auto;
     overflow-y: auto;
-    scroll-behavior: smooth;
-    gap: 20px;
 
 }
-.leftMsg{
-    width: 50vw;
-    margin-bottom: 20px;
+.Conversation::-webkit-scrollbar{
+    display: none;
+}
+.Conversation2Msg{
+    display: flex;
+
+    flex-direction: column;
 }
 .rightMsg{
-    margin-right: -20vw;
-    margin-bottom: 20px;
+
+    display: flex;
+    justify-content: end;
+    padding-right: 15vw;
+    margin-top: 20px;
+}
+.leftMsg{
+
+    padding-left: 15vw;
+    margin-top: 20px;
 }
 
-@keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
+.HomeContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
 }
-
-.leftMsg .MessageBoxAi::after {
-    font-size: 6em;
-    content: '...';
-    font-size: x-large;
-    display: inline-block;
-    animation: blink 1s infinite;
+.HomeFirst{
+    width: 50vw;
+    height: 40vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20vh;
 }

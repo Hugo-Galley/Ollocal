@@ -1,51 +1,45 @@
 'use client';
-import '@/app/styles/Home.css';
 import DialogBox from "@/components/DialogBox";
-import MessageBox from '@/components/MessageBox';
-import MessageBoxAi from '@/components/MessageBoxAi';
-import { useState, useEffect, useRef } from 'react';
-import {TalkWithAI} from '@/app/scripts/talkwithAi.Js' 
+import MessageBox from "@/components/MessageBox";
+import { useState } from "react";
+import '@/app/styles/Home.css'
+import MessageBoxAi from "@/components/MessageBoxAi";
 
 export default function Home() {
-    const [messages, setMessages] = useState([]);
-    const messagesEndRef = useRef(null);
-    const [loading, setLoading] = useState(false);
-
-    const handleNewMessage = (message) => {
-        setMessages(prevMessages => [...prevMessages, { text: message, sender: 'user' }]);
-        
-        setTimeout(() => {
-            askToAI(message)
-        }, 1000);
-    };
-
-    const askToAI = async (message) => {
-        setLoading(true);
-        setMessages(prevMessages => [...prevMessages, { text: '...', sender: 'ai' }]);
-        let response = await TalkWithAI(message);
-        setLoading(false);
-        setMessages(prevMessages => prevMessages.slice(0, -1));
-        setMessages(prevMessages => [...prevMessages, { text: response, sender: 'ai' }]);
-    };
-
-    useEffect(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, [messages]);
-
+    const [messageSubmit, setMessageSubmit] = useState([]);
+    function RecupMessageFromUser(message){
+        setMessageSubmit((ancienMessage) => [...ancienMessage, message]);
+    }
     return (
-        <div className="mainBoxHome">
-            <div className='Conversation'>
-                {messages.map((msg, index) => (
-                    <div key={index} className={msg.sender === 'user' ? 'rightMsg' : 'leftMsg'}>
-                        {msg.sender === 'user' ? 
-                            <MessageBox message={msg.text} /> : 
-                            <MessageBoxAi message={msg.text} />
-                        }
+        <div className="HomeContainer">
+            {messageSubmit.length === 0 ? (
+                <div className="HomeFirst">
+                    <h2 className="title">Bienvenue sur Ollocal</h2>
+                    <div className="DialogBox">
+                        <DialogBox onTextSubmit={RecupMessageFromUser} />
                     </div>
-                ))}
-                <div ref={messagesEndRef} />
-            </div>
-            <DialogBox onSendMessage={handleNewMessage} />
+                </div>
+                
+            ) : (
+                <>
+                    <div className="Conversation">
+                        {messageSubmit.map((msgValue, index) => (
+                            <div key={index} className="Conversation2Msg">
+                                <div className="rightMsg">
+                                    <MessageBox message={msgValue} />
+                                </div>
+                                <div className="leftMsg">
+                                    <MessageBoxAi message={msgValue} />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="DialogBox">
+                        <DialogBox onTextSubmit={RecupMessageFromUser} />
+                    </div>
+                </>
+            )}
         </div>
     );
+    
 }

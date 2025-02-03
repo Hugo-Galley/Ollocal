@@ -1,14 +1,9 @@
-.divMessage{
-    background-color: #343541;
-    width: 28vw;
-    text-align: start;
-    padding: 20px;
+.messageBoxContainer{
+    background-color: red;
+    width: 30vw;
     height: auto;
-    border-radius: 20px;
-
+    min-height: 5vh;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #343541;
 }
-.aiMessage {
-    max-width: 28vw; 
-    overflow: hidden;
-    overflow-x: auto; 
-} 
